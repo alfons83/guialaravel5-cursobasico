@@ -1,11 +1,11 @@
 # Guia Laravel5 - Curso Basico
-Guía explicativa del Curso básico de Laravel 5. http://styde.net/laravel-5/
+Guía explicativa del Curso básico de Laravel 5. 
 
 ##Introducción
 
-*6 cambios que debes conocer de Laravel 5
-*Cómo estructurar tu aplicación en Laravel 5
-*Curso básico de Laravel 5 en español – 7 horas en video
+* 6 cambios que debes conocer de Laravel 5
+* Cómo estructurar tu aplicación en Laravel 5
+* Curso básico de Laravel 5 en español – 7 horas en video
 
 ##Capítulos
 1. Introducción: instalación y uso de Composer (20min)
