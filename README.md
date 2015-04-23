@@ -1,5 +1,5 @@
 # Guia Laravel5 - Curso Basico
-GuÃ­a explicativa del Curso bÃ¡sico de Laravel 5. http://styde.net/laravel-5/
+Guía explicativa del Curso básico de Laravel 5. http://styde.net/laravel-5/
 
 Artículos
 
