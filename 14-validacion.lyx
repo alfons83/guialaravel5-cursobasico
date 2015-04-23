@@ -1,0 +1,527 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Validación - Parte 1
+\end_layout
+
+\begin_layout Standard
+Laravel maneja la validación de manera muy sencilla, siguiendo un patrón
+ para definir las reglas de validación con cadenas en un array asociativo,
+ similar a como lo hacía Codeigniter:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$rules = [ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		'name' => 'required',
+\end_layout
+
+\begin_layout Plain Layout
+
+		'password' => 'required|min:8',
+\end_layout
+
+\begin_layout Plain Layout
+
+		'email' => 'required|email|unique:users' 
+\end_layout
+
+\begin_layout Plain Layout
+
+	];
+\end_layout
+
+\end_inset
+
+ Además, si has trabajado con Laravel 3 o 4 seguramente este código te resultará
+ familiar:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$validator = Validator::make($data, $rules);
+\end_layout
+
+\begin_layout Plain Layout
+
+	if($validator->fails()){
+\end_layout
+
+\begin_layout Plain Layout
+
+		// It failed
+\end_layout
+
+\begin_layout Plain Layout
+
+		Redirect::back()->withErrors($validator->messages())->withInput(); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	// Everything good here: 
+\end_layout
+
+\begin_layout Plain Layout
+
+		User::create($data); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		return Redirect::route('users.index'); 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Este es típicamente el código que hace falta para validar un array de datos
+ (que típicamente viene de un Request POST o PUT).
+ Básicamente usamos el patrón “Factory” para crear un nuevo validador, esto
+ es lo que hace Validator::make y luego tenemos algunos métodos muy fáciles
+ de usar como “$validator->fails” que comprueba si la validación falló y
+ “$validator->messages()” que nos devuelve los errores de validación.
+\end_layout
+
+\begin_layout Standard
+Sin embargo si ya has trabajado con Laravel sabrás que este código se termina
+ repitiendo una y otra y otra vez dentro de tu aplicación.
+\end_layout
+
+\begin_layout Standard
+Por ello en Laravel 5, Taylor Otwell incorporó 2 métodos para hacer la validació
+n aún más fácil, que en las versiones anteriores.
+ Estos son: el método “validate” dentro del controlador con el trait 
+\emph on
+Illuminate
+\backslash
+Foundation
+\backslash
+Validation
+\backslash
+ValidatesRequests
+\emph default
+ y los 
+\emph on
+Form Requests
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Veremos los 3 métodos: desde Validator::make hasta los Form Requests, así
+ que si eres nuevo o ya tienes experiencia con Laravel este nuevo videotutorial
+ de Laravel te será muy útil.
+ 
+\end_layout
+
+\begin_layout Standard
+Ir a lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Validación - Parte 1"
+target "http://duilio.me/validacion-con-laravel-5-form-requests/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Material adicional
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Validación con Laravel 4 y Codeception "
+target "http://duilio.me/validacion-con-laravel-y-codeception/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentación oficial sobre validación"
+target "http://laravel.com/docs/5.0/validation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Form Requests and controller validation (Laracasts)"
+target "https://laracasts.com/series/laravel-5-fundamentals/episodes/12"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Subsection
+Impide que el usuario agregue contraseñas menores a 6 caracteres 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	'password' => 'required|min:6',
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Solicita que el usuario confirme su contraseña 
+\end_layout
+
+\begin_layout Standard
+En el formulario debemos de agregar el otro campo: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('password_confirmation', 'Repita contraseña')!!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::password('password_confirmation',['class' => 'form-control'])!!}
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div>
+\end_layout
+
+\end_inset
+
+y la validación del password para confirmarlo quedaría así:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	'password' => 'required|confirmed|min:6',
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Crea la validación para el formulario de user profile
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	class createUserProfileRequest extends Request {
+\end_layout
+
+\begin_layout Plain Layout
+
+	/** 	 
+\end_layout
+
+\begin_layout Plain Layout
+
+	* Determine if the user is authorized to make this request.
+\end_layout
+
+\begin_layout Plain Layout
+
+	*
+\end_layout
+
+\begin_layout Plain Layout
+
+	* @return bool
+\end_layout
+
+\begin_layout Plain Layout
+
+	*/ 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function authorize(){
+\end_layout
+
+\begin_layout Plain Layout
+
+		return true;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	/** 
+\end_layout
+
+\begin_layout Plain Layout
+
+	* Get the validation rules that apply to the request.
+\end_layout
+
+\begin_layout Plain Layout
+
+	*
+\end_layout
+
+\begin_layout Plain Layout
+
+	* @return array
+\end_layout
+
+\begin_layout Plain Layout
+
+	*/ 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function rules(){
+\end_layout
+
+\begin_layout Plain Layout
+
+		return ['bio' => 'required',
+\end_layout
+
+\begin_layout Plain Layout
+
+				'twitter' => 'required',
+\end_layout
+
+\begin_layout Plain Layout
+
+				'website' => 'required|active_url',
+\end_layout
+
+\begin_layout Plain Layout
+
+				'birthdate' => 'required|date',
+\end_layout
+
+\begin_layout Plain Layout
+
+				'gender' => 'required|in:male,female' 
+\end_layout
+
+\begin_layout Plain Layout
+
+			];
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Con qué criterios escogerías cuando usar validate y cuando FormRequest?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El método validate es conveniente si queremos validar una, dos o hasta 3
+ columnas.
+ Mientras que FormRequest es conveniente para validar formularios más extensos,
+ ya que al extraer la lógica a una clase aparte, nuestro controlador queda
+ más limpio.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Qué sucede si validate o FormRequest fallan?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Laravel lanza una excepción que luego es capturada y finalmente se retorna
+ una redirección hacia la página anterior con los errores, o se envían los
+ errores en formato JSON (si la petición original fue AJAX) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Por qué el código siguiente no se ejecuta a pesar de que no hay condicionales
+ (if)? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Porque la excepción que lanza Laravel interrumpe el flujo normal del código,
+ entonces si no se cumplen las reglas en validate o FormRequest, somos redirigid
+os a la URL anterior con los respectivos errores.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Qué otras reglas agregarías antes de crear el usuario?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Que el email no esté repetido 
+\end_layout
+
+\begin_layout Itemize
+Que la contraseña tenga un nivel de seguridad adecuada 
+\end_layout
+
+\begin_layout Itemize
+El nombre y apellido sean de carácter alfabéticos
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

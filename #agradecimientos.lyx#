@@ -1,0 +1,1270 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+¡Gracias por aprender con nosotros!
+\end_layout
+
+\begin_layout Standard
+Muchas gracias a todos por seguir este curso básico, sobretodo a quienes
+ se han tomado unos momentos para comentar y compartir el contenido, y a
+ quienes han hecho aportes al sitio, gracias por la confianza y por permitirme
+ dedicar varias semanas a enseñarles Laravel y también a aprender de Ustedes.
+\end_layout
+
+\begin_layout Standard
+Gracias a: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Juan Gonzalez"
+target "https://vimeo.com/juandjgl"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "@juanDJGL"
+target "https://twitter.com/juanDJGL"
+
+\end_inset
+
+ por mejorar el audio del 
+\begin_inset CommandInset href
+LatexCommand href
+name "curso básico de Laravel 5"
+target "http://duilio.me/laravel-5/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Gracias a: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Ronal Coello"
+target "http://nob.com.ve/"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "@roncreative"
+target "https://twitter.com/roncreative"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "Manuel Gonzalez"
+target "http://manuelitox.com/"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "@manuelitox"
+target "https://twitter.com/Manuelitox"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset href
+LatexCommand href
+name "Jessica Aristimuño"
+target "https://www.behance.net/ninaiskel"
+
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "@NinAiskel"
+target "https://twitter.com/NinAiskel"
+
+\end_inset
+
+ por el apoyo con el diseño de contenido y del sitio.
+\end_layout
+
+\begin_layout Standard
+Gracias a: Rafael Torrealba 
+\begin_inset CommandInset href
+LatexCommand href
+name "@reta110 "
+target "http://www.twitter.com/reta110"
+
+\end_inset
+
+por crear la guía del curso de Laravel 5.
+\end_layout
+
+\begin_layout Section*
+Gracias por compartir tu conocimiento con nosotros:
+\end_layout
+
+\begin_layout Itemize
+Manuel González – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@manuelitox"
+target "http://www.twitter.com/manuelitox"
+
+\end_inset
+
+ – ¡6 tutoriales! 
+\end_layout
+
+\begin_layout Itemize
+Sergio Márquez – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@smarquezs"
+target "http://www.twitter.com/smarquezs"
+
+\end_inset
+
+ – ¡5 tutoriales! 
+\end_layout
+
+\begin_layout Itemize
+Yair Rodríguez – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@imyairodriguez"
+target "http://www.twitter.com/imyairodriguez"
+
+\end_inset
+
+ – ¡5 tutoriales! 
+\end_layout
+
+\begin_layout Itemize
+Dimitri Acosta – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@Dimitri_Acosta"
+target "http://www.twitter.com/Dimitri_Acosta"
+
+\end_inset
+
+ – ¡4 tutoriales! 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Guillermo Rodas"
+target "http://rioth.me/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@Garethderioth"
+target "http://www.twitter.com/Garethderioth"
+
+\end_inset
+
+ – ¡2 tutoriales! 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Ariel Crippa"
+target "http://www.awdesarrollos.com.ar/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@armandoweb"
+target "http://www.twitter.com/armandoweb"
+
+\end_inset
+
+ – 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Fernando Montoya"
+target "http://montogeek.co/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@montogeek"
+target "http://www.twitter.com/montogeek"
+
+\end_inset
+
+ – 
+\end_layout
+
+\begin_layout Itemize
+Jesús David Barranco Velasco – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@jdbv1982"
+target "http://www.twitter.com/jdbv1982"
+
+\end_inset
+
+ – 
+\end_layout
+
+\begin_layout Itemize
+Jose Trezza – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@jtrezza"
+target "http://www.twitter.com/jtrezza"
+
+\end_inset
+
+ – 
+\end_layout
+
+\begin_layout Itemize
+Marcos Luna – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@marcoslunah"
+target "http://www.twitter.com/marcoslunah"
+
+\end_inset
+
+ – 
+\end_layout
+
+\begin_layout Itemize
+Ricky Cruz – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@kldbug"
+target "http://www.twitter.com/kldbug"
+
+\end_inset
+
+ – 
+\end_layout
+
+\begin_layout Itemize
+Yoel Monzon – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@yoelfme"
+target "http://www.twitter.com/yoelfme"
+
+\end_inset
+
+ –
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Muchísimas gracias por otorgarme tu confianza y permitirme crear un curso
+ de Laravel libre y gratuito:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Abel Ponce – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@vnponce "
+target "http://www.twitter.com/vnponce"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alberto Sosa – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@albertodsgreen"
+target "http://www.twitter.com/albertodsgreen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Aldo Franco Zumaran Orefice 
+\end_layout
+
+\begin_layout Itemize
+Alejandro Candelas Tirado 
+\end_layout
+
+\begin_layout Itemize
+Alfonso Hernandez Montoya 
+\end_layout
+
+\begin_layout Itemize
+Alfonso Rios Perez 
+\end_layout
+
+\begin_layout Itemize
+Alfonso Serrano Albert – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@alfonso_{}serrano"
+target "http://www.twitter.com/alfonso_serrano"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alvaro Yanes Basanta – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@al_{}yanes"
+target "http://www.twitter.com/al_yanes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Andres Felipe Vásquez"
+target "http://www.anvarstudios.co/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@anvarstudios"
+target "http://www.twitter.com/anvarstudios"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Andres Gonzalo Riveros Düllmann – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@847ard "
+target "http://www.twitter.com/847ard"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Andres Velasquez 
+\end_layout
+
+\begin_layout Itemize
+Angeles Fernandez Regatillo Ruiz 
+\end_layout
+
+\begin_layout Itemize
+Antonio Gonzalez Pelaez 
+\end_layout
+
+\begin_layout Itemize
+Anwar Sarmiento 
+\end_layout
+
+\begin_layout Itemize
+Armando Lazarte – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@armandolazarte "
+target "http://www.twitter.com/armandolazarte"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Carlos Castaño Guillen – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@carloscasen"
+target "http://www.twitter.com/carloscasen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Casen Xu "
+target "http://www.casenxu.com/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@CasenXu "
+target "http://www.twitter.com/CasenXu"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+César Cruz Cáceres 
+\end_layout
+
+\begin_layout Itemize
+Clemir Rondón Pérez – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@clemir"
+target "http://www.twitter.com/clemir"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Daniel Muñoz Morales 
+\end_layout
+
+\begin_layout Itemize
+Daniel Saavedra – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@mantrax314 "
+target "http://www.twitter.com/mantrax314"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dimitri Acosta – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@Dimitri_{}Acosta"
+target "http://www.twitter.com/Dimitri_Acosta"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Edgar Morales – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@egarmorales"
+target "http://www.twitter.com/egarmorales"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eduardo Cifuentes López – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@edcilo"
+target "http://www.twitter.com/edcilo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Enrique Ruiz-chena Fuentes 
+\end_layout
+
+\begin_layout Itemize
+Erick Daniel Brito Arroyo 
+\end_layout
+
+\begin_layout Itemize
+Ernesto Aides – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@enaides"
+target "http://www.twitter.com/enaides"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fabio Enrique Sanchez Rosado – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@sauware"
+target "http://www.twitter.com/sauware"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Federico Castañeda Ortiz 
+\end_layout
+
+\begin_layout Itemize
+Federico Ramato 
+\end_layout
+
+\begin_layout Itemize
+Fernando Fernandez Sanchez 
+\end_layout
+
+\begin_layout Itemize
+Filemon Linares Carbajal 
+\end_layout
+
+\begin_layout Itemize
+Fortunato Fernandez – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@EyTato "
+target "http://www.twitter.com/EyTato"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Francisco Alba Ponce "
+target "http://www.falbaponce.es/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@F_albaponce "
+target "http://www.twitter.com/F_albaponce"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gerardo Andres Arcos Celis 
+\end_layout
+
+\begin_layout Itemize
+Giovanni M.
+ López – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@gml_{}89"
+target "http://www.twitter.com/gml_89"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gonzalo Prudente – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@gonzaloprudente "
+target "http://www.twitter.com/gonzaloprudente"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Intelvid Limitada"
+target "http://claudio.vallejo.cl/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@cvallejo "
+target "http://www.twitter.com/cvallejo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Isaac Aldalur Errazkin 
+\end_layout
+
+\begin_layout Itemize
+Israel Elizarraraz 
+\end_layout
+
+\begin_layout Itemize
+Jair Andres Galvis Tellez 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Jesús García Valadez"
+target "https://about.me/jesusGarciaV"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@_Chucho_"
+target "http://www.twitter.com/_Chucho_"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Jesús Márquez Racero 
+\end_layout
+
+\begin_layout Itemize
+Jose Alegret Garcia 
+\end_layout
+
+\begin_layout Itemize
+Jose Ayram 
+\end_layout
+
+\begin_layout Itemize
+Jose Caballero Garcia – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@j82caballero"
+target "http://www.twitter.com/j82caballero"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "José Manuel Cerrejón González "
+target "http://misapuntesde.com/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+José Miguel García De León – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@menatoric59 "
+target "http://www.twitter.com/menatoric59"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Juan Carlos Valdés 
+\end_layout
+
+\begin_layout Itemize
+Juan Gonzalez – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@juanDJGL"
+target "http://www.twitter.com/juanDJGL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Juan Ignacio De Los Cobos Islas – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@nachodlc "
+target "http://www.twitter.com/nachodlc"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Juan Ignacio Navarro Guardado – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@aerojun"
+target "http://www.twitter.com/aerojun"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Juan Torres – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@juanintorres "
+target "http://www.twitter.com/juanintorres"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Leyvi Silvan Silvan – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@Leyvisilvan"
+target "http://www.twitter.com/Leyvisilvan"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Luis Coronel – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@380AC "
+target "http://www.twitter.com/380AC"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Luis Lagardera Salazar"
+target "http://www.tdavenezuela.com/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@feltoxXx"
+target "http://www.twitter.com/feltoxXx"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Manuel Antonio Vargas Medina – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@mVargasMedina "
+target "http://www.twitter.com/mVargasMedina"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Manuel Cabrera Vivas 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Manuel Camacho"
+target "http://maedca.net/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@maedca "
+target "http://www.twitter.com/maedca"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Manuel Villagordo Vera"
+target "http://www.webioss.com/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@manuelvillagrdo "
+target "http://www.twitter.com/manuelvillagrdo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Marc Miralles – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@MarcMirallesBio "
+target "http://www.twitter.com/MarcMirallesBio"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mario Mendoza – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@mamc8408"
+target "http://www.twitter.com/mamc8408"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Miguel Leon Fernandez 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Milton Gómez"
+target "http://milthongomez.com/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@milthongomez"
+target "http://www.twitter.com/milthongomez"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Montalvo Miguel – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@imontalvomiguel"
+target "http://www.twitter.com/imontalvomiguel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Nacho Alvarez Fernandez – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@xDVeGax "
+target "http://www.twitter.com/xDVeGax"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Narcisa Ludeña 
+\end_layout
+
+\begin_layout Itemize
+Omar Zurita – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@kikez_{}ec "
+target "http://www.twitter.com/kikez_ec"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Oscar-mauricio Ortiz-forero 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Osledy Jocelyn Bazo P"
+target "http://www.osledybazo.com/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@uokesita "
+target "http://www.twitter.com/uokesita"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Rafael Agostini"
+target "http://ragostini.com/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@initsogar Rafael "
+target "http://www.twitter.com/initsogar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Raúl Larico Ramos 
+\end_layout
+
+\begin_layout Itemize
+Raul Soto Velasquez 
+\end_layout
+
+\begin_layout Itemize
+Richard Flores Palomo 
+\end_layout
+
+\begin_layout Itemize
+Robero Espinosa Gómez 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Rubén Darío Gutiérrez Sánchez"
+target "http://adrenalinaestudio.net/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@_RubenGutierrez "
+target "http://www.twitter.com/_RubenGutierrez"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sergio Valente – 
+\begin_inset CommandInset href
+LatexCommand href
+name "@Plus_{}rt "
+target "http://www.twitter.com/Plus_rt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Shirley Concepcion Candelaria
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Snheidert Smalbach Moreno"
+target "http://aikon.co/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@iamSmalbach "
+target "http://www.twitter.com/iamSmalbach"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Varela Perez"
+target "http://www.rafaelvarela.com/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@RafaVarelaCol"
+target "http://www.twitter.com/RafaVarelaCol"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Francisco René Sandoval Pérez"
+target "http://www.renesandoval.net/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@resand91"
+target "http://www.twitter.com/resand91"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Andros Fenollosa Hurtado"
+target "http://programadorwebvalencia.com/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@androsfenollosa "
+target "http://www.twitter.com/androsfenollosa"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "David Sánchez "
+target "http://www.berenes.es/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Iván Abascal Lozano"
+target "http://abalozz.es/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@abalozz"
+target "http://www.twitter.com/abalozz"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Javier Ocampo Bernasconi"
+target "http://www.javierocampo.net/"
+
+\end_inset
+
+– 
+\begin_inset CommandInset href
+LatexCommand href
+name "@job73 "
+target "http://www.twitter.com/job73"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

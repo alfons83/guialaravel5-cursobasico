@@ -1,0 +1,507 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+AJAX y Laravel usando jQuery
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename jquery_ajax_laravel.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tal como lo indica el título, hoy aprenderemos cómo interactuar desde Javascript
+ con un backend en Laravel, tal como lo haríamos con un API; pero en este
+ caso haremos un ejemplo sencillo dentro de nuestra aplicación, para eliminar
+ filas utilizando jQuery y una petición POST con AJAX.
+\end_layout
+
+\begin_layout Standard
+A pesar de que hoy en día existen frameworks de Javascript más potentes
+ como AngularJS, jQuery aún es útil si sólo necesitamos agregar contenido
+ dinámico para algún widget dentro de nuestra aplicación o sitio web, por
+ ejemplo un campo de auto-completado o combos dependientes.
+\end_layout
+
+\begin_layout Standard
+Hoy veremos por primera vez cómo podemos combinar un framework de Javascript
+ con una aplicación de Laravel, también aprenderemos sobre el formato JSON,
+ todo esto le va a permitir a nuestros usuarios eliminar registros sin necesidad
+ de que la página recargue dentro del navegador.
+\end_layout
+
+\begin_layout Standard
+Por último responderemos a la pregunta: ¿Es posible utilizar el framework
+ de Javascript ____ con Laravel?
+\end_layout
+
+\begin_layout Standard
+Ir a la lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "AJAX y Laravel usando jQuery"
+target "http://duilio.me/ajax-y-laravel-usando-jquery/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Material adicional
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Eliminar un registro con Laravel 4 y Codeception"
+target "http://duilio.me/eliminar-un-registro-con-laravel-y-codeception/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Subsection
+Mueve el código Javascript que creamos en clase a un archivo .js y llámalo
+ desde el layout app.blade.php
+\end_layout
+
+\begin_layout Standard
+En la carpeta 
+\emph on
+resource/js 
+\emph default
+crear archivo 
+\emph on
+ajax-delete.js 
+\emph default
+y colocar el código
+\emph on
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$(document).ready(function() {     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	$('.btn-delete').click(function(e){
+\end_layout
+
+\begin_layout Plain Layout
+
+		e.preventDefault();
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+		var row = $(this).parents('tr');         
+\end_layout
+
+\begin_layout Plain Layout
+
+		var id = row.data('id');
+\end_layout
+
+\begin_layout Plain Layout
+
+		var form = $('#form-delete');
+\end_layout
+
+\begin_layout Plain Layout
+
+		var url = form.attr('action').replace(':USER_ID', id);
+\end_layout
+
+\begin_layout Plain Layout
+
+		var data = form.serialize();
+\end_layout
+
+\begin_layout Plain Layout
+
+		$.post(url, data, function(result){
+\end_layout
+
+\begin_layout Plain Layout
+
+		    row.fadeOut();
+\end_layout
+
+\begin_layout Plain Layout
+
+		}).fail(function(){
+\end_layout
+
+\begin_layout Plain Layout
+
+		    row.fadeIn();    
+\end_layout
+
+\begin_layout Plain Layout
+
+		});    
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	});
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Intenta hacer el código de Javascript genérico para que funcione con otros
+ módulos similares 
+\end_layout
+
+\begin_layout Subsection
+Busca “bootstrap notifications” en Google e intenta integrar un componente
+ a tu módulo de manera de imprimir mensajes más elegantes que no bloqueen
+ al usuario (como lo hace la funnción alert).
+ Por ejemplo, podrías usar este 
+\begin_inset CommandInset href
+LatexCommand href
+name "plugin"
+target "http://goodybag.github.io/bootstrap-notify/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Primero 
+\begin_inset CommandInset href
+LatexCommand href
+name "descargar"
+target "https://github.com/goodybag/bootstrap-notify"
+
+\end_inset
+
+, colocar el 
+\emph on
+bootstrap-notify.css 
+\emph default
+en la carpeta 
+\emph on
+resources/css
+\emph default
+ y colocar el archivo 
+\emph on
+bootstrap-notify.js
+\emph default
+ en la carpeta 
+\emph on
+resources/js.
+\end_layout
+
+\begin_layout Standard
+Luego puedes colocar el llamado a los archivos en tu layout 
+\emph on
+app.blade.php:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	<script src="{{ URL::asset('/js/ajax-delete.js')}}"></script>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<script src="{{ URL::asset('/js/bootstrap-notify.js')}}"></script>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por último tu script ajax-delete quedaría así:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$(document).ready(function() {     
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	$('.btn-delete').click(function(e){
+\end_layout
+
+\begin_layout Plain Layout
+
+		e.preventDefault();
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+		var row = $(this).parents('tr');         
+\end_layout
+
+\begin_layout Plain Layout
+
+		var id = row.data('id');
+\end_layout
+
+\begin_layout Plain Layout
+
+		var form = $('#form-delete');
+\end_layout
+
+\begin_layout Plain Layout
+
+		var url = form.attr('action').replace(':USER_ID', id);
+\end_layout
+
+\begin_layout Plain Layout
+
+		var data = form.serialize();
+\end_layout
+
+\begin_layout Plain Layout
+
+		$.post(url, data, function(result){
+\end_layout
+
+\begin_layout Plain Layout
+
+		    row.fadeOut();
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\end_layout
+
+\begin_layout Plain Layout
+
+			$('.top-left').notify({
+\end_layout
+
+\begin_layout Plain Layout
+
+				message: {
+\end_layout
+
+\begin_layout Plain Layout
+
+				text: result.message}
+\end_layout
+
+\begin_layout Plain Layout
+
+			}).show();
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+		}).fail(function(){
+\end_layout
+
+\begin_layout Plain Layout
+
+		    row.fadeIn();
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+			$('.top-left').notify({
+\end_layout
+
+\begin_layout Plain Layout
+
+				message: { text: 'El usuario no fue eliminado' },
+\end_layout
+
+\begin_layout Plain Layout
+
+				type: 'danger'
+\end_layout
+
+\begin_layout Plain Layout
+
+			}).show();
+\end_layout
+
+\begin_layout Plain Layout
+
+		});    
+\end_layout
+
+\begin_layout Plain Layout
+
+	  }); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	});
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Cuando es conveniente que recargue el navegador y cuando que nuestra app
+ tenga interacción 100% con Javascript?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recargar el navegador completo, es necesario cuando la información es más
+ unilateral, la cual esperamos una nueva vista de la aplicación, o nos dirigimos
+ a otra sección con la acción anterior.
+\end_layout
+
+\begin_layout Itemize
+Con javaScript, cuando la información es bilateral y dinámica.
+ Como usa facebook o Twitter en el home del sitio, que la información es
+ necesaria que se refresque sola o con un pequeño comando (click) 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

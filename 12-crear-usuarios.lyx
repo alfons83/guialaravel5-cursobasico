@@ -1,0 +1,339 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Creación de usuarios con Laravel y Eloquent
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename laravel-bootstrap-1024x228.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ya hemos creado nuestro listado y paginación de usuarios, ahora vamos a
+ crear nuevos usuarios.
+ En el siguiente video, aprenderemos como crear formularios con Laravel
+ y a usar las rutas correctas para cada una de nuestras funciones, para
+ ello nos apoyaremos con el comando: artisan route:list.
+ Por supuesto, también utilizaremos el framework de CSS Twitter Bootstrap
+ para ir aplicando estilos a nuestra aplicación.
+\end_layout
+
+\begin_layout Standard
+Por último, aprenderemos a encriptar contraseñas y a redireccionar a un
+ usuario a una ruta específica.
+\end_layout
+
+\begin_layout Standard
+Ir a lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Creación de usuarios"
+target "http://duilio.me/crear-usuarios-con-laravel-y-eloquent/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tutoriales recomendados
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Aprende a escribir rutas con Laravel "
+target "http://duilio.me/aprende-a-escribir-rutas-con-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Cómo asociar rutas a controladores y acciones con Laravel "
+target "http://duilio.me/como-asociar-rutas-a-controladores-y-acciones-con-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentación Bootstrap – CSS (Documentación oficial)"
+target "http://getbootstrap.com/css/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Http Controllers (Documentación oficial) "
+target "http://laravel.com/docs/5.0/controllers"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Forms (Laracasts)"
+target "https://laracasts.com/series/laravel-5-fundamentals/episodes/10"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Subsection
+Agregar nuevos campos al módulo de usuarios
+\end_layout
+
+\begin_layout Standard
+Podemos realizarlo con una simple modificación de nuestra migración.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Creando-Migraciones"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Hacer el formulario para agregar el profile a un usuario
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	<div class="form-group">     
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('bio', 'Biografía') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::text('bio',null,['class' => 'form-control', 'placeholder' =>
+ '']) !!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('twitter', 'Twitter') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::text('twitter',null,['class' => 'form-control', 'placeholder'
+ => 'Twitter']) !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('website', 'Website') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::text('website',null,['class' => 'form-control', 'placeholder'
+ => 'Website']) !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+	{!! Form::label('birthdate', 'Fecha de nacimiento') !!}     {!! Form::date('bir
+hdate', 
+\backslash
+Carbon
+\backslash
+Carbon::now(),['class' => 'form-control datepicker', 'placeholder' => ''])
+ !!} </div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('gender', 'Género') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::select('gender',['' => 'Eligir género', 'female' => 'Femenino','male
+' => 'Masculino'], ['class' => 'form-control']) !!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div> 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Cuál es la utilidad del comando php artisan route::list?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Esta sentencia nos permite visualizar la lista completa de las rutas declaradas
+ en nuestra aplicación.
+ Muy útil para saber de qué rutas disponemos, cuál es su nombre (named routes),
+ qué tipo de método usan (GET, POST, etc.) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Para qué sirve la variable fillable?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+La variable fillable de nuestro modelo nos permite indicar cuales son las
+ columnas que pueden ser agregadas al modelo mediante “mass assigment” es
+ decir, cuando pasamos un array de datos al modelo con el uso del método
+ fillable, o con métodos como create(), esta variable nos permite ser explícitos
+ en qué columnas queremos que estén disponibles para ser pasadas a través
+ de dichos métodos, lo contrario a fillable es la propiedad guarded 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

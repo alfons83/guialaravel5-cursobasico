@@ -1,0 +1,265 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Agregar rutas adicionales a un controlador de tipo resource en Laravel
+\end_layout
+
+\begin_layout Standard
+En el módulo de usuarios que creamos para el curso básico de Laravel 5,
+ creamos un controlador de tipo resource, el cual resulta muy práctico si
+ necesitamos las acciones básicas de cualquier módulo: crear, editar, listar,
+ eliminar y ver, pero ¿Qué sucede si necesitamos una acción extra? Por ejemplo,
+ si quisiéramos una nueva acción para crear un reporte de usuarios ¿Cómo
+ incluimos la nueva ruta al resource controller?
+\end_layout
+
+\begin_layout Standard
+Quizás lo primero que se te ocurra es hacer esto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	Route::resource('users','UsersController');
+\end_layout
+
+\begin_layout Plain Layout
+
+	Route::get('users/report', 'UsersController@report'); 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pero si haces eso, obtendrás un error como el siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename laravel-error-1024x193.png
+	scale 88
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+No query results for model [Course
+\backslash
+User].
+ Esto sucede porque la ruta asignada para el método 
+\emph on
+UsersController@show
+\emph default
+ tiene el siguiente formato: 
+\emph on
+admin/users/{users}
+\emph default
+ y el parámetro users por defecto no tiene restricciones, es decir, puede
+ ser un número o una cadena de texto…
+\end_layout
+
+\begin_layout Standard
+¿Entonces cuando tipeo users/report en el navegador se está llamando al
+ método show con el parámetro “report” en vez del método report?
+\end_layout
+
+\begin_layout Standard
+¡Exacto! Puedes solucionar esto de dos formas:
+\end_layout
+
+\begin_layout Standard
+La primera y más fácil es invertir el orden de las rutas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	Route::get('users/report','UsersController@report');
+\end_layout
+
+\begin_layout Plain Layout
+
+	Route::resource('users', 'UsersController');
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto soluciona el problema porque
+\series bold
+ el orden de las rutas es importante para Laravel
+\series default
+, entonces ahora la ruta users/report tendrá precedencia sobre la ruta show
+ y las demás rutas del resource controller.
+\end_layout
+
+\begin_layout Standard
+La segunda forma, sería definir un “patrón” para el parámetro “users”, y
+ esto se hace con esta función:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	Route::pattern('users', '[0-9]+');
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por supuesto, tienes que colocarla antes de definir tu resource controller,
+ pero ahora no importa si colocas el resource controller antes de la ruta
+ para 
+\emph on
+users/report
+\end_layout
+
+\begin_layout Standard
+Esta función limita al parámetro users a sólo números, por lo tanto “report”
+ ya no será un parámetro users válido y users/report no coincidirá con la
+ ruta “users.show”
+\end_layout
+
+\begin_layout Standard
+Este tutorial, aunque básico, te mostró un par de tips interesantes para
+ escribir 
+\begin_inset CommandInset href
+LatexCommand href
+name "rutas en Laravel"
+target "http://duilio.me/aprende-a-escribir-rutas-con-laravel/"
+
+\end_inset
+
+, no olvides revisar los otros tutoriales de 
+\begin_inset CommandInset href
+LatexCommand href
+name "Laravel 5"
+target "http://duilio.me/laravel-5/"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset href
+LatexCommand href
+name "Laravel 4"
+target "http://duilio.me/proyectos/"
+
+\end_inset
+
+ para aprender más sobre rutas y otros temas de este maravilloso framework.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+¿Te sabes otros tips de Laravel?
+\series default
+ Para compartirlos escríbeme a i@duilio.me y los publicaremos en el sitio.
+\end_layout
+
+\begin_layout Standard
+Ir al post: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Agregar rutas adicionales a un controlador"
+target "http://duilio.me/agregar-rutas-adicionales-a-un-controlador-de-tipo-resource-en-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

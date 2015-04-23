@@ -1,0 +1,210 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Eliminar Registros
+\end_layout
+
+\begin_layout Standard
+Continuando con la creación de un módulo en nuestro curso de Laravel 5.
+ Para ello haremos la acción restante: eliminar registros.
+\end_layout
+
+\begin_layout Standard
+Con Laravel podemos eliminar registros de dos formas utilizando el ORM de
+ Laravel, Eloquent dentro de nuestro resource controller.
+\end_layout
+
+\begin_layout Standard
+Una de ellas es usando el método destroy, que acepta como parámetro una
+ ID.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	User::destroy($id); 
+\end_layout
+
+\end_inset
+
+Otra es usando el método delete (para ello necesitamos cargar antes el objeto
+ User)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$user = User::find($id); $user->delete();
+\end_layout
+
+\end_inset
+
+ También en esta lección aprenderemos a mostrar alerts o mensajes temporales
+ con el método Session::flash.
+\end_layout
+
+\begin_layout Standard
+Ir a lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Eliminar Registros"
+target "Eliminar Registros"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Material adicional
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Eliminar registros con Laravel 4 y Codeception "
+target "http://duilio.me/eliminar-un-registro-con-laravel-y-codeception/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Usar Eloquent en tu proyecto sin Laravel"
+target "http://duilio.me/implementar-eloquent-orm-en-tu-proyecto-sin-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividad
+\end_layout
+
+\begin_layout Itemize
+Elimina varios registros.
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Cuál es la diferencia entre destroy y delete?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El método destroy elimina el objeto directamente a través de una sentencia
+ SQL DELETE por lo cual es más rápido que el método delete() pero no obtendremos
+ el objeto ni sus atributos para usarlos en nuestra acción.
+ 
+\end_layout
+
+\begin_layout Itemize
+En cambio el método delete() aunque elimina el registro de la base de datos,
+ aún tendremos disponible el objeto y sus atributos o métodos mientras se
+ ejecute la acción (ideal para enviar mensajes “alert” o si necesitamos
+ hacer operaciones adicionales con dicho objeto).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Cuando es conveniente usar un método u otro?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El delete() es conveniente en casos donde queremos mostrar información en
+ la vista de lo que se ha borrado u hacer operaciones adicionales con el
+ objeto, destroy() es conveniente si la velocidad de la operación es crucial
+ y no necesitamos obtener los datos del registro, sólo ejecutar la consulta
+ DELETE.
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

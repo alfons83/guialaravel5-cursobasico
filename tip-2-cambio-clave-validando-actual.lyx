@@ -1,0 +1,618 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Cambiar contraseña con Laravel (validando clave actual)
+\end_layout
+
+\begin_layout Standard
+Laravel 5 es genial y por eso incluye “out of the box” el módulo para recuperar
+ contraseñas, el cual es imprescindible en la mayoría de los sistemas, pero
+ ¿Qué pasa si el usuario no ha olvidado su contraseña, sino que simplemente
+ quiere cambiarla?
+\end_layout
+
+\begin_layout Standard
+La mayoría de los sistemas web incluyen la posibilidad de cambiar tu clave
+ una vez que te has conectado a dicho sistema, pero por seguridad te pedirán
+ que confirmes tu contraseña actual.
+\end_layout
+
+\begin_layout Standard
+En este tutorial aprenderás cómo crear reglas personalizadas de validación
+ con Laravel para crear la regla que te permitirá confirmar la clave actual
+ del usuario.
+\end_layout
+
+\begin_layout Standard
+Si ya has trabajado con Laravel 4, quizás estás acostumbrado a crear reglas
+ de validación nuevas usando el método Validator::extend de esta manera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	Validator::extend('foo', function($attribute, $value, $parameters) 
+\end_layout
+
+\begin_layout Plain Layout
+
+	{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		return $value == 'foo'; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	});
+\end_layout
+
+\end_inset
+
+ En Laravel 5 esto sigue funcionando, y puedes colocarlo dentro del método
+ “boot” de cualquier Service Provider.
+ Pero la manera que me parece más correcta de agregar la regla extra, es
+ extender la clase de Validación por completo.
+\end_layout
+
+\begin_layout Standard
+Para ello crea esta clase dentro de tu carpeta app/.
+ Puedes dejarla justo en app/ o crear un subdirectorio llamado “Core”, “Support”
+, “Validation” o lo que quieras, sólo recuerda que el nombre del directorio
+ y del namespace deben coincidir dado que Laravel 5 usa PSR-4 para autocargar
+ las clases:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	<?php namespace NombreDeTuApp
+\backslash
+Core; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		use Illuminate
+\backslash
+Support
+\backslash
+Facades
+\backslash
+Auth; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		use Illuminate
+\backslash
+Support
+\backslash
+Facades
+\backslash
+Hash; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		use Illuminate
+\backslash
+Validation
+\backslash
+Validator as LaravelValidator; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		class Validator extends LaravelValidator {
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		public function validateCurrentPassword($attribute, $value, $parameters)
+ { 	return Hash::check($value, Auth::user()->clave); 
+\end_layout
+
+\begin_layout Plain Layout
+
+			} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\end_inset
+
+ Nota: por supuesto no olvides cambiar el namespace.
+\end_layout
+
+\begin_layout Standard
+Con esto ya tienes tu clase de validación personalizada, fíjate que incluí
+ una nueva regla de validación para comprobar que la clave actual del usuario
+ es correcta, esto, como ya comenté, es una medida común de seguridad, más
+ que nada para prevenir que si el usuario dejó su cuenta abierta una tercera
+ persona maliciosa no pueda cambiar la contraseña.
+\end_layout
+
+\begin_layout Standard
+Nota también que Laravel nuevamente hace uso de convenciones (cumpliendo
+ con el principio DRY): si quieres definir una nueva regla de validación
+ esta llevará el prefijo “validate” y luego el nombre de la regla en formato
+ CamelCase.
+\end_layout
+
+\begin_layout Standard
+Lo segundo que necesitamos es registrar nuestra clase de validación y esto
+ lo hacemos con un Service Provider, crea esta clase dentro de app/Providers/Val
+idatorServiceProvider.php:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	<?php namespace NombreDeTuApp
+\backslash
+Providers;
+\end_layout
+
+\begin_layout Plain Layout
+
+		use Illuminate
+\backslash
+Support
+\backslash
+Facades
+\backslash
+Validator;
+\end_layout
+
+\begin_layout Plain Layout
+
+		use Illuminate
+\backslash
+Support
+\backslash
+ServiceProvider; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		class ValidatorServiceProvider extends ServiceProvider { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		public function boot() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+			Validator::resolver(function($translator, $data, $rules, $messages) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			return new 
+\backslash
+NombreDeTuApp
+\backslash
+Core
+\backslash
+Validator($translator, $data, $rules, $messages);
+\end_layout
+
+\begin_layout Plain Layout
+
+			});
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		public function register(){ }
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\end_inset
+
+ Una vez hecho esto tienes que registrar el Service Provider, esto se hace
+ en el archivo config/app.php, busca el array llamado $providers y coloca
+ al final el nombre completo de la clase (incluyendo el namespace):
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	 'providers' => [
+\end_layout
+
+\begin_layout Plain Layout
+
+	// OTROS PROVIDERS VAN AQUI.
+ NO LOS BORRES O ALGO MALO VA A PASAR 
+\end_layout
+
+\begin_layout Plain Layout
+
+	// COLOCA TU PROVIDER AL FINAL: 
+\end_layout
+
+\begin_layout Plain Layout
+
+	// PUEDES COLOCARLE UN COMENTARIO BONITO, ALGO COMO:
+\end_layout
+
+\begin_layout Plain Layout
+
+	/******MI APP PROVIDERS ****/ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	'NombreDeTuApp
+\backslash
+Providers
+\backslash
+ValidatorServiceProvider'
+\end_layout
+
+\begin_layout Plain Layout
+
+	];
+\end_layout
+
+\end_inset
+
+ ¡Listo! Ya la nueva regla de validación está disponible.
+ Ahora puedes definir un nuevo Form Request o validar con el método $this->valid
+ate dentro del controlador, como hemos visto ya en el curso de Laravel 5.
+\end_layout
+
+\begin_layout Standard
+A mí me gustan los Form Requests así que yo creé el mío con lo siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	<?php namespace NombreDeTuApp
+\backslash
+Http
+\backslash
+Requests; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		use Illuminate
+\backslash
+Foundation
+\backslash
+Http
+\backslash
+FormRequest; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		class ChangePasswordRequest extends FormRequest { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		/** * Determine if the user is authorized to make this request.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		* 
+\end_layout
+
+\begin_layout Plain Layout
+
+		* @return bool 
+\end_layout
+
+\begin_layout Plain Layout
+
+		*/
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		public function authorize() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+			return true; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		/** * Get the validation rules that apply to the request.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		* 
+\end_layout
+
+\begin_layout Plain Layout
+
+		* @return array 
+\end_layout
+
+\begin_layout Plain Layout
+
+		*/ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		public function rules() {
+\end_layout
+
+\begin_layout Plain Layout
+
+		return [ 
+\end_layout
+
+\begin_layout Plain Layout
+
+			'clave_actual' => 'required|min:6|current_password', 
+\end_layout
+
+\begin_layout Plain Layout
+
+			'clave' => 'confirmed|min:6' ]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		public function messages() {
+\end_layout
+
+\begin_layout Plain Layout
+
+			return []; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		/** * Get the sanitized input for the request.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		* 
+\end_layout
+
+\begin_layout Plain Layout
+
+		* @return array 
+\end_layout
+
+\begin_layout Plain Layout
+
+		*/
+\end_layout
+
+\begin_layout Plain Layout
+
+			public function sanitize() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+			return $this->only('clave');
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\end_inset
+
+ Acá la novedad es que tenemos una nueva regla llamada “current_password”
+ (nota que es lo mismo que definimos en nuestro Validador pero sin el prefijo
+ validate y el formato es con underscore en vez de camel case.
+\end_layout
+
+\begin_layout Standard
+Si has seguido el curso de Laravel 5 seguramente ya sabrás como hacer uso
+ de los Form Requests y sabrás cómo crear formularios en tus vistas así
+ que dejo el resto del código en tus manos.
+\end_layout
+
+\end_body
+\end_document

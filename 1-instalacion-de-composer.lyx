@@ -1,0 +1,258 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Aprende Laravel 5: Instalación y uso de Composer
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename dependencias-composer.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+name "Composer"
+target "https://getcomposer.org/"
+
+\end_inset
+
+es un manejador de depedencias de PHP, similar a NPM en node.js y a los bundles
+ de Ruby.
+ Es una de las mejores herramientas disponibles para el desarrollo en PHP
+ hoy en día, nos permite manejar las dependencias de nuestros proyectos,
+ ya sea la descarga de un framework completo como Laravel o Symfony, o component
+es más sencillos como un generador de PDFs, esto lo podemos hacer a través
+ de Composer.
+\end_layout
+
+\begin_layout Standard
+En el siguiente video aprenderemos cómo instalar Composer en nuestro computador
+ y luego cómo encontrar paquetes usando Packagist e instalarlos finalmente
+ con Composer.
+\end_layout
+
+\begin_layout Standard
+Ir a lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Instalación y uso de composer"
+target "http://duilio.me/aprende-laravel-5-instalacion-y-uso-de-composer/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Lecturas recomendadas
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Qué es Composer y cómo usarlo"
+target "http://duilio.me/que-es-composer-y-como-usarlo/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Cómo instalar Composer en Windows "
+target "http://duilio.me/instalacion-de-composer-y-laravel-en-windows/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Cómo instalar Composer en Ubuntu "
+target "http://duilio.me/instalacion-de-composer-y-laravel-en-ubuntu-14-lts-paso-a-paso/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Itemize
+Instala Composer de manera global en tu equipo Busca e instala un paquete
+ utilizando Packagist y Composer 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ir a la página oficial y seguir los pasos según tu sismtema operativo.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Sitio oficial de Composer"
+target "https://getcomposer.org/"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Aprende más sobre el archivo composer.json (
+\begin_inset CommandInset href
+LatexCommand href
+name "Tutorial en inglés"
+target "http://composer.json.jolicode.com/"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Cuál es la relación entre Composer y Laravel? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Composer es un manejador de dependencias, similar a lo que 
+\begin_inset CommandInset href
+LatexCommand href
+name "npm"
+target "https://www.npmjs.com/"
+
+\end_inset
+
+ es a Javascript y a lo que 
+\begin_inset CommandInset href
+LatexCommand href
+name "Bundler"
+target "http://bundler.io/"
+
+\end_inset
+
+ es a Ruby, con unas simples líneas de código puedes descargar y actualizar
+ desde un framework completo hasta un simple componente que tu proyecto
+ necesite.
+ Laravel entonces es un “paquete más” que instalas con Composer.
+ Cuando creas un proyecto con Laravel lo haces a través de Composer y Laravel
+ es una dependencia de tu proyecto: dicho de otra manera, tu proyecto va
+ a depender de Laravel.
+ Laravel a su vez depende de varios componentes de terceros, entre ellos
+ Symfony, Doctrine, todo lo cual es manejado automáticamente por Composer.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Es una ventaja o desventaja que los frameworks usen Composer (ej: Laravel
+ vs Codeigniter) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Es una total ventaja, de esta forma se evita tener que estar bajando plugins
+ y sus dependencias de forma manual, lo cual puede causar incompatibilidades,
+ futuros errores, problemas de seguridad (al tener que buscar y descargar
+ parches de forma manual, lo más probable es que nos olvidemos de ellos).
+ Además se pueden conseguir muchos 
+\begin_inset CommandInset href
+LatexCommand href
+name "paquetes"
+target "https://packagist.org/"
+
+\end_inset
+
+, los cuales podemos instalar y re utilizar en cualquier proyecto.
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

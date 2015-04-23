@@ -1,0 +1,302 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\options letterpapper
+\use_default_options false
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Usando la autenticación de usuario integrada
+\end_layout
+
+\begin_layout Standard
+Avanzando en el estudio del código que viene por defecto en Laravel 5, vamos
+ a abrir de nuevo el archivo de rutas en 
+\emph on
+app/Http/routes.php
+\end_layout
+
+\begin_layout Standard
+Veremos la siguiente ruta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	Route::get('home', 'HomeController@index');
+\end_layout
+
+\end_inset
+
+ Según lo aprendido en la clase anterior, para acceder a esta ruta debemos
+ escribir /home en el navegador, pero si intentamos acceder a ella veremos
+ que somos “redireccionados” a la ruta 
+\emph on
+/auth/login
+\emph default
+ ¿Por qué? La página “home” está protegida por un middleware.
+\end_layout
+
+\begin_layout Standard
+En Laravel 5 los middleware (que en Laravel 4 se conocían como “Filtros”)
+ están en el medio de la petición de usuario y el código para ejecutar dicha
+ petición, y nos permiten proteger rutas entre otras utilidades.
+\end_layout
+
+\begin_layout Standard
+Ir a lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Autenticación de usuarios - Laravel 5"
+target "http://duilio.me/usando-la-autenticacion-de-usuario-que-viene-con-laravel-5/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tutoriales recomendados
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Migraciones en Laravel "
+target "http://duilio.me/migraciones-en-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Autenticación de usuarios en Laravel 4 "
+target "http://duilio.me/sistema-de-autenticacion-de-usuarios-en-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Traits en PHP "
+target "http://php.net/manual/es/language.oop5.traits.php"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Middleware (documentación oficial en inglés) "
+target "http://laravel.com/docs/5.0/middleware"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Ogres are like Middleware (Laracasts, en inglés) "
+target "res are like Middleware (Laracasts, en inglés)"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividad
+\end_layout
+
+\begin_layout Subsubsection
+Prueba la autenticación y registro de usuarios en Laravel 5
+\end_layout
+
+\begin_layout Standard
+Podemos examinar el comportamiento del módulo autenticación escribiendo
+ en el navegador: 
+\emph on
+nombre_de_tu _aplicación.app/home
+\emph default
+.
+ Notarás que se te redigirá a la ruta 
+\emph on
+auth/login
+\emph default
+, esto pasa poque la petición pasa primero por el middleware 
+\emph on
+Authenticate.php
+\emph default
+ y en él se indica que no tienes autorización para ir a esa ruta.
+ Si en cambio en el archivo
+\emph on
+ Http/HomeController 
+\emph default
+comentamos la línea de código que hace el llamado al middleware:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	// $this->middleware('auth');
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+e intentas ingresar a la ruta 
+\emph on
+/home
+\emph default
+, notarás que ahora puedes acceder.
+ 
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Cuál es la ventaja de usar middlewares? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ayuda a restringir acceso a rutas protegidas, con un código muy fácil de
+ entender.
+ 
+\end_layout
+
+\begin_layout Itemize
+Evaluan las peticiones antes de que lleguen al controlador.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Cuál es la ventaja del uso de migraciones?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Facilitan la creación y modificación de las tablas en nuestro proyecto 
+\end_layout
+
+\begin_layout Itemize
+Mejoran la portabilidad de la base de datos 
+\end_layout
+
+\begin_layout Itemize
+Puedes “migrar” tus tablas en cualquiera de los motores de base de datos
+ que Laravel soporta.
+ 
+\end_layout
+
+\begin_layout Itemize
+Fácil control de versiones de la base de datos cuando se está trabajando
+ en equipo 
+\end_layout
+
+\begin_layout Itemize
+Su uso es opcional, puedes implementarlas en tu proyecto o no
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Encuentras otro caso en el que sea útil usar un middleware?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Restringir que solo los usuarios de determinado grupo pueden acceder a determina
+da sección 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

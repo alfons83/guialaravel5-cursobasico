@@ -1,0 +1,1034 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\options letterpapper
+\use_default_options false
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Fluent y Eloquent - Parte 1
+\end_layout
+
+\begin_layout Standard
+En Laravel existen dos opciones para realizar nuestras consultas SQL.
+\end_layout
+
+\begin_layout Standard
+En primer lugar Fluent, que no es nada más que un constructor de consultas
+ SQL o “query builder” (basado en PDO) y está encargado de generar cualquier
+ consulta a la base de datos, ya sea para traer, insertar, actualizar, o
+ eliminar datos.
+ Cabe destacar que además de facilitar la interacción con nuestra base de
+ datos, las consultas generadas vienen por defecto con los niveles de seguridad
+ para evitar inyecciones SQL en nuestras consultas.
+ 
+\end_layout
+
+\begin_layout Standard
+Ir a la lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Fluent y Eloquent - Parte 1 "
+target "http://duilio.me/fluent-y-eloquent-en-laravel-5-parte-1/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tutoriales recomendados
+\end_layout
+
+\begin_layout Itemize
+Cómo encadenar métodos con PHP (POO) 
+\end_layout
+
+\begin_layout Itemize
+Documentación oficial: Query Builder
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Subsection
+Crea un query para imprimir todos los usuarios de tipo user.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$result = 
+\backslash
+DB::table('users')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->where('type','=','user')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->get();
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	dd($result);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Crea un query para imprimir sólo el nombre y el email del usuario ordenados
+ alfabéticamente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$result = 
+\backslash
+DB::table('users')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->select('first_name','email')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->orderBy('first_name', 'ASC')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->get();
+\end_layout
+
+\begin_layout Plain Layout
+
+	    
+\end_layout
+
+\begin_layout Plain Layout
+
+	dd($result);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Genera una consulta para traer al usuario que tenga el ID 5
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$result = 
+\backslash
+DB::table('users')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->where('id','=', '5')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->get();
+\end_layout
+
+\begin_layout Plain Layout
+
+	    
+\end_layout
+
+\begin_layout Plain Layout
+
+	dd($result);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Devuelve los usuarios de la DB dependiendo de su genero:
+\end_layout
+
+\begin_layout Subsubsection
+Agrega el campo 
+\emph on
+gender
+\emph default
+ a la migración
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	Schema::create('user_profiles', function(Blueprint $table)
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->increments('id');
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->mediumText('bio')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->string('twitter')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->string('website')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->string('gender')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->integer('user_id')->unsigned();
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->foreign('user_id')
+\end_layout
+
+\begin_layout Plain Layout
+
+			      ->references('id')
+\end_layout
+
+\begin_layout Plain Layout
+
+			      ->on('users')
+\end_layout
+
+\begin_layout Plain Layout
+
+			      ->onDelete('cascade');
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->timestamps();
+\end_layout
+
+\begin_layout Plain Layout
+
+	});
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Luego con el seeder haz que algunos usuarios sean de género masculino y
+ otros de género femenino
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$gender = $faker->randomElement($array = array ('female', 'male'));
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+		$id = 
+\backslash
+DB::table('users')->insertGetId(array(
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'first_name'  => $faker->firstName($gender),
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'last_name'   => $faker->lastName,
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'email'       => $faker->unique()->email,
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'password'    => 
+\backslash
+Hash::make('secret'),
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'type'        => 'user'
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		));
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+DB::table('user_profiles')->insert(array(
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'user_id'   => $id,
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'bio'       => $faker->paragraph(rand(2,5)),
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'website'   => 'http://www.'.$faker->domainName,
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'gender'    => $gender,
+\end_layout
+
+\begin_layout Plain Layout
+
+		    'twitter'   => 'http://www.twiter.com/'.$faker->userName,
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Haz consultas para traerte todos los usuarios de género masculino o femenino
+ y ordenados alfabéticamente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$result = 
+\backslash
+DB::table('users')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->select('users.*', 'user_profiles.gender as gender')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->leftJoin('user_profiles', 'users.id', '=', 'user_profiles.user_id')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->where('gender','=', 'female')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->orderBy('first_name','ASC')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->get();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	dd($result);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Devuelve sólo usuarios activos:
+\end_layout
+
+\begin_layout Subsubsection
+Agrega el campo 
+\emph on
+active
+\emph default
+ en la migración.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	Schema::create('users', function(Blueprint $table)
+\end_layout
+
+\begin_layout Plain Layout
+
+		{
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->increments('id');
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->string('first_name');
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->string('last_name');
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->string('email')->unique();
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->string('password', 60);
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->enum('type',['admin','user']);
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->boolean('active')->default(true);
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->rememberToken();
+\end_layout
+
+\begin_layout Plain Layout
+
+			$table->timestamps();
+\end_layout
+
+\begin_layout Plain Layout
+
+	});
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Con el seeder haz que algunos usuarios están como activos (1) y otros como
+ inactivos (0)
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$id = 
+\backslash
+DB::table('users')->insertGetId(array(
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        'first_name'  => $faker->firstName($gender),
+\end_layout
+
+\begin_layout Plain Layout
+
+        'last_name'   => $faker->lastName,
+\end_layout
+
+\begin_layout Plain Layout
+
+        'email'       => $faker->unique()->email,
+\end_layout
+
+\begin_layout Plain Layout
+
+        'active'      => $faker->numberBetween(0, 1),
+\end_layout
+
+\begin_layout Plain Layout
+
+        'password'    => 
+\backslash
+Hash::make('secret'),
+\end_layout
+
+\begin_layout Plain Layout
+
+        'type'        => 'user'
+\end_layout
+
+\begin_layout Plain Layout
+
+    ));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Ahora crea una consulta para devolver el email de todos los usuarios activos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$result = 
+\backslash
+DB::table('users')
+\end_layout
+
+\begin_layout Plain Layout
+
+		        ->select('email')
+\end_layout
+
+\begin_layout Plain Layout
+
+		        ->where('active','=', '1')
+\end_layout
+
+\begin_layout Plain Layout
+
+		        ->get();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	dd($result);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Trae sólo usuarios mayores de edad:
+\end_layout
+
+\begin_layout Subsubsection
+Agrega el campo 
+\emph on
+birthdate
+\emph default
+ a las migraciones y a los seeders
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	Schema::create('user_profiles', function(Blueprint $table)
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		$table->increments('id');
+\end_layout
+
+\begin_layout Plain Layout
+
+        $table->mediumText('bio')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+        $table->string('twitter')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+        $table->string('website')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+        $table->date('birthdate')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+        $table->string('gender')->nullable();
+\end_layout
+
+\begin_layout Plain Layout
+
+        $table->integer('user_id')->unsigned();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        $table->foreign('user_id')
+\end_layout
+
+\begin_layout Plain Layout
+
+              ->references('id')
+\end_layout
+
+\begin_layout Plain Layout
+
+              ->on('users')
+\end_layout
+
+\begin_layout Plain Layout
+
+              ->onDelete('cascade');
+\end_layout
+
+\begin_layout Plain Layout
+
+        $table->timestamps();
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Usa Faker para generar fechas aleatorias
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	
+\backslash
+DB::table('user_profiles')->insert(array(
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+        'user_id'   => $id,
+\end_layout
+
+\begin_layout Plain Layout
+
+        'bio'       => $faker->paragraph(rand(2,5)),
+\end_layout
+
+\begin_layout Plain Layout
+
+        'website'   => 'http://www.'.$faker->domainName,
+\end_layout
+
+\begin_layout Plain Layout
+
+        'birthdate' => $faker->date($format = 'Y-m-d'),
+\end_layout
+
+\begin_layout Plain Layout
+
+        'gender'    => $gender,
+\end_layout
+
+\begin_layout Plain Layout
+
+        'twitter'   => 'http://www.twiter.com/'.$faker->userName,
+\end_layout
+
+\begin_layout Plain Layout
+
+    ));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Luego crea una consulta para traer sólo los usuarios que sean mayor de edad
+ y ordenados del mayor al más joven.
+\end_layout
+
+\begin_layout Standard
+Para ello vamos a crear una variable 
+\begin_inset Quotes fld
+\end_inset
+
+under_date
+\begin_inset Quotes frd
+\end_inset
+
+ la cual tendrá la fecha de 
+\emph on
+hoy
+\emph default
+ menos 18 años exactamente.
+ De esta manera podemos mostrar los usuarios que tengan fecha de nacimiento
+ menor a nuestra variable.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$under_date = 
+\backslash
+Carbon
+\backslash
+Carbon::now()->subYears(18)->format('Y-m-d');
+\end_layout
+
+\begin_layout Plain Layout
+
+	        
+\end_layout
+
+\begin_layout Plain Layout
+
+	$result = 
+\backslash
+DB::table('users')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->select('users.*','user_profiles.birthdate as birthdate')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->leftJoin('user_profiles','users.id','=','user_profiles.user_id')   
+      
+\end_layout
+
+\begin_layout Plain Layout
+
+				->where('birthdate','<',$under_date)
+\end_layout
+
+\begin_layout Plain Layout
+
+				->orderBy('birthdate','ASC')->get();
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	dd($result);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿En qué ocasiones Fluent no nos protege de inyecciones SQL?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Las ocasiones en que no nos encontramos protegidos de inyecciones SQL es
+ cuando usamos 
+\backslash
+DB::raw(), ya que este método ingresa directamente lo escrito dentro en
+ la sentencia SQL y no es escapada por PDO.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Cuáles son las ventajas y desventajas del uso de DB::raw?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+La ventaja de DB::raw() es la personalización o manejo directo de la sentencia
+ SQL por nosotros mismos, si fuera alguna petición que no se encontrará
+ con el uso de Fluent, este método nos da la flexibilidad de realizarla
+ manualmente.
+ La desventaja: nos podríamos exponer a inyección de SQL si no somos cuidados:
+ Nunca pases datos que provengan del usuario directamente con DB::raw 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Cuál es la ventaja de realizar JOINs en nuestras consultas?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Nos ayudan a obtener datos compartidos por dos tablas con el uso de las
+ llaves primarias y foráneas.
+ Nos permiten escribir sentencias condicionales más complejas.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Qué error frecuente encontramos cuando realizamos un JOIN?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lo que nos puede ocurrir es ver un campo duplicado, si ambas tablas cuentan
+ con una columna del mismo nombre como usualmente es la columna “id”, podemos
+ confundirnos al no saber a qué tabla pertenece dicho dato.
+ La solución: especificar alias (id as profile_id, por ejemplo) al momento
+ de crear la consulta con Fluente.
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

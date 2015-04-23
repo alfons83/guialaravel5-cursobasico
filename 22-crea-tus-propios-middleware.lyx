@@ -1,0 +1,121 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Crea tus propios Middleware con Laravel 5
+\end_layout
+
+\begin_layout Standard
+En el capítulo anterior aprendimos qué son los 
+\begin_inset CommandInset href
+LatexCommand href
+name "Middleware de Laravel 5"
+target "http://duilio.me/middleware-laravel-5/"
+
+\end_inset
+
+ y cómo usarlos.
+ Pero la verdadera utilidad de los Middleware llega cuando podemos generar
+ nuevos que nos ayuden a proteger nuestra aplicación de acuerdo a la lógica
+ que queramos implementar.
+\end_layout
+
+\begin_layout Standard
+Cada aplicación es diferentes, en todas la seguridad es un tema crucial,
+ sin embargo hay aplicaciones que sólo tienen un tipo de usuario, otras
+ que sólo tienen un par de tipos y otras que requieren sistemas de permisos
+ complejos como 
+\begin_inset CommandInset href
+LatexCommand href
+name "listas de control de acceso o ACL"
+target "http://es.wikipedia.org/wiki/Lista_de_control_de_acceso"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Yo he encontrado que para muchos sistemas tener un par de tipos de usuarios
+ con permisos bien definidos es suficiente, y es lo que aprenderemos en
+ esta lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Crea tus propios Middleware con Laravel 5"
+target "http://duilio.me/crea-tus-propios-middleware-con-laravel-5/"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

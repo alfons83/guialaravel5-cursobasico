@@ -1,0 +1,132 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\options letterpapper
+\use_default_options false
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding utf8
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Primeros pasos con Laravel 5
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename laravel-1024x392.png
+	scale 46
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este capítulo explicaré cómo funciona la página de inicio Laravel 5,
+ paso a paso, es ideal para principiantes o usuarios más avanzados que se
+ preguntan cómo funciona el framework Laravel.
+\end_layout
+
+\begin_layout Standard
+Ir a la lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Primero pasos Laravel 5"
+target "http://duilio.me/primeros-pasos-con-laravel-5/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tutoriales recomendados
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Escribir rutas con Laravel"
+target "http://duilio.me/aprende-a-escribir-rutas-con-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Asociar rutas a controladores y Acciones con Laravel"
+target "http://duilio.me/como-asociar-rutas-a-controladores-y-acciones-con-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

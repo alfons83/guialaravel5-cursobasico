@@ -1,0 +1,349 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Listado y Paginación
+\end_layout
+
+\begin_layout Standard
+Con los conocimientos básicos de: Vistas, Modelos, Controladores, rutas,
+ Blade y otros que hemos aprendido durante este Curso de Laravel 5, vamos
+ a comenzar a construir nuestro primer módulo.
+\end_layout
+
+\begin_layout Standard
+Así que hoy aprenderemos cómo hacer un listado paginado con Laravel 5.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename listado-de-usuarios-de-laravel-5-1024x375.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para ello veremos cómo podemos generar y utilizar un controlador de tipo
+ Resource que usaremos para el resto de nuestro módulo de usuarios con Laravel,
+ así evitaremos las posibles colisiones en las rutas y a su vez comenzaremos
+ a ver las asociaciones entre una acción en un controlador, una URL y el
+ nombre de una ruta (named routes).
+\end_layout
+
+\begin_layout Standard
+Por último, veremos cuan sencillo resulta hacer la paginación de nuestros
+ registros en este nuevo videotutorial de Laravel: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Listado y paginación"
+target "http://duilio.me/paginacion-con-laravel-5/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tutoriales recomendados
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Aprende a escribir rutas con Laravel "
+target "http://duilio.me/aprende-a-escribir-rutas-con-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Cómo asociar rutas a controladores y acciones con Laravel"
+target "http://duilio.me/como-asociar-rutas-a-controladores-y-acciones-con-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Paginación de registros con Laravel 4 y Codeception "
+target "http://duilio.me/paginacion-de-registros-con-laravel-y-codeception/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Paginación (Documentación oficial)"
+target "http://laravel.com/docs/5.0/pagination"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Subsection
+Mostrar la columna “type” en el listado de usuarios.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	@foreach($users as $user)         
+\end_layout
+
+\begin_layout Plain Layout
+
+		<tr>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<td>{{$user->id}}</td>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<td>{{$user->full_name}}</td>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<td>{{$user->email}}</td>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<td>{{$user->type}}</td>          
+\end_layout
+
+\begin_layout Plain Layout
+
+			<td>
+\end_layout
+
+\begin_layout Plain Layout
+
+			<a href="{{route('admin.users.show', $user->id)}}" class="btn btn-primary">Ver<
+/a>  
+\end_layout
+
+\begin_layout Plain Layout
+
+			<a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-success">Edit
+ar</a>
+\end_layout
+
+\begin_layout Plain Layout
+
+			</td>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</tr>     
+\end_layout
+
+\begin_layout Plain Layout
+
+	@endforeach
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Colocar arriba de la tabla más información: número de usuarios, número de
+ páginas, etc.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	<p> Hay {{$users->total()}} usuarios </p>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<p>Usted está en la pagina {{$users->currentPage()}}</p>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Mostrar usuarios con paginación de 20 en 20 ordenados alfabéticamente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$users = User::select('id', 'first_name', 'email', 'type')
+\end_layout
+
+\begin_layout Plain Layout
+
+					->orderBy('first_name', 'ASC') 
+\end_layout
+
+\begin_layout Plain Layout
+
+					->paginate(20);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Cuál es la utilidad de usar Route::group y Route::resource?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Route::group
+\emph default
+ nos sirve para asignar características similares a un conjunto de rutas,
+ como pueden ser: prefijo, namespace, middleware, etc.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Route:resource
+\emph default
+ nos va a permitir generar mediante artisan un controlador con las funciones
+ básicas necesarias para hacer un módulo CRUD RESTful.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Qué beneficio nos brinda crear sub-carpetas dentro de Controllers/ y de
+ views/?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Organizar mejor nuestros controladores y nuestras vistas, por ejemplo si
+ vas a crear un panel de administrador o un servicio RSS sería conveniente
+ crear los controladores en las subcarpetas respectivas: 
+\emph on
+Admin/
+\emph default
+ y
+\emph on
+ Rss/ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

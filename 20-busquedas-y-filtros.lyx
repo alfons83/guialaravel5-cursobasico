@@ -1,0 +1,414 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Búsquedas y filtros con Laravel y Eloquent (Query scopes) - Parte 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename filtrar-registros-laravel-1024x230.png
+	scale 88
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En los capítulos anteriores aprendimos cómo crear, editar, eliminar, listar
+ y hasta paginar registros.
+ Con esto casi terminamos el módulo de usuarios.
+\end_layout
+
+\begin_layout Standard
+Digo “casi” porque imaginen que de pronto tenemos 500 usuarios o más en
+ nuestra base de datos y queremos saber si Taylor Otwell se registró en
+ nuestra aplicación.
+ Tal como está el módulo ahora tendríamos que buscar registro por registro
+ lo cual no es nada práctico.
+\end_layout
+
+\begin_layout Standard
+Por ello hoy les enseñaré cómo buscar o filtrar registros en la base de
+ datos usando el ORM Eloquent y una características incluida en dicho ORM
+ llamada “query scopes”.
+ Ir a lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Búsquedas y filtros con Laravel"
+target "http://duilio.me/busquedas-y-filtros-con-laravel-y-eloquent-query-scopes/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Material relacionado
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Filtrar registros con Laravel y Codeception"
+target "http://duilio.me/filtrar-un-listado-de-registros-con-laravel-y-codeception/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Query scopes (documentación oficial)"
+target "http://laravel.com/docs/4.2/eloquent#query-scopes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Subsection
+Agrega un segundo campo (de tipo select) para filtrar usuarios según su
+ tipo (agrega también un nuevo query scope)
+\end_layout
+
+\begin_layout Standard
+El código en la vista para el select sería:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	{!!Form::select('type',['' => 'Seleccione un tipo',
+\end_layout
+
+\begin_layout Plain Layout
+
+		'user' => 'user', 
+\end_layout
+
+\begin_layout Plain Layout
+
+		'visitor' => 'visitor',
+\end_layout
+
+\begin_layout Plain Layout
+
+		'editor' => 'editor'],
+\end_layout
+
+\begin_layout Plain Layout
+
+		null, 
+\end_layout
+
+\begin_layout Plain Layout
+
+		['class' => 'form-control'])
+\end_layout
+
+\begin_layout Plain Layout
+
+	!!}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego creamos el 
+\emph on
+scopeType
+\emph default
+ en nuestro modelo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	public function scopeType($query, $type){
+\end_layout
+
+\begin_layout Plain Layout
+
+        if(trim($type) != ''){ 
+\end_layout
+
+\begin_layout Plain Layout
+
+           $query->where('type', $type);
+\end_layout
+
+\begin_layout Plain Layout
+
+		}    
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ya creado, lo podemos utilizar en nuestro controlador de esta manera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	$users = User::name($request->get('name'))
+\end_layout
+
+\begin_layout Plain Layout
+
+				->type($request->get('type'))
+\end_layout
+
+\begin_layout Plain Layout
+
+				->orderBy('first_name', 'ASC')
+\end_layout
+
+\begin_layout Plain Layout
+
+				->paginate();
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Extrae todo el código para filtrar y paginar usuarios a un método “static”
+ dentro del modelo User o a un repositorio
+\end_layout
+
+\begin_layout Standard
+En nuestro modelo colocamos nuestra función que realiza el filtrado y paginación.
+ La llamaremos 
+\emph on
+filterAndPaginate().
+ 
+\emph default
+Recibe el 
+\emph on
+request 
+\emph default
+y retornamos los usuarios.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	static  function filterAndPaginate($request){
+\end_layout
+
+\begin_layout Plain Layout
+
+        $users = User::name($request->get('name'))
+\end_layout
+
+\begin_layout Plain Layout
+
+					->type($request->get('type'))
+\end_layout
+
+\begin_layout Plain Layout
+
+					->orderBy('first_name', 'ASC')
+\end_layout
+
+\begin_layout Plain Layout
+
+					->paginate();         
+\end_layout
+
+\begin_layout Plain Layout
+
+		return $users;     
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nuestro controlador solo quedaría llamando a nuestra función y pasandole
+ como parámetro el 
+\emph on
+request
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	public function index(Request $request) 	{
+\end_layout
+
+\begin_layout Plain Layout
+
+	$users = User::filterAndPaginate($request);
+\end_layout
+
+\begin_layout Plain Layout
+
+		return view('admin.users.index', compact('users'));         
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿En qué situaciones es necesario agregar filtros o buscadores? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Donde la cantidad de registros va a ir creciendo con el tiempo 
+\end_layout
+
+\begin_layout Itemize
+Donde los registros de tu aplicación estén organizados por alguna categoría
+ o tipo 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Qué tipos de filtros o buscadores encuentras más útiles en un sistema?
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Búsqueda por texto 
+\end_layout
+
+\begin_layout Itemize
+Filtros por categorías 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,618 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+%+++++++++++++++++++++++++++
+% Este archivo  de configuracion
+%+++++++++++++++++++++++++++
+% Inicio de documento
+
+%Paquetes importados
+\usepackage{listings} %listado (abajo la configuración)
+\usepackage{url} %links
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} 
+\usepackage[rm]{roboto} %la funete roboto
+\usepackage{wallpaper} %wallpaper
+\usepackage{multicol} %multi columnas
+\usepackage{ragged2e} %texto alineado a la izquierda
+
+%Información - Página inicial
+\title{Curso de Laravel 5}
+\author{ A. U. Thor }
+\title{Cursol Laravel 5 - Desde Cero}
+\author{Duilio.me}
+\date{\today}
+
+%color de links
+\definecolor{carminepink}{rgb}{0.92, 0.3, 0.26}
+
+%configuracion avanzada de head y foot
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\small\leftmark}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{\tiny Todos los derechos reservados - Duilio.me}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.1pt}
+
+%colores para el lst
+
+\definecolor{darkgreen}{HTML}{019D59} %comentarios - verde oscuro
+
+\definecolor{key}{HTML}{0077AA} %palabras claves - azul
+\definecolor{identifier}{HTML}{F89086} % generalmente primera palabra - rosado
+\definecolor{variables}{HTML}{4EA1DF} % variables - azul claro
+\definecolor{operators}{HTML}{E39775}
+
+\definecolor{backcolour}{HTML}{F0F2F1}%fondo - gris claro
+\definecolor{string}{HTML}{666666} % comentarios - gris oscuro
+\definecolor{leter}{HTML}{444444} % otras letras - gris mas oscuro
+
+%\textsf es para que no salga tan curva, como el texto normal.
+
+\lstdefinestyle{mystyle}{
+  language        = php,
+backgroundcolor=\color{backcolour},
+  basicstyle      = \color{leter},
+ keywordstyle=\color{key},
+ morekeywords={__halt_compiler, abstract, and, array, as, break, callable, case, catch, class, clone, const, continue, declare, default, die, do, echo, else, elseif, empty, enddeclare, endfor, endforeach, endif, endswitch, endwhile, eval, exit, extends, final, for, foreach, function, global, goto, if, implements, include, include_once, instanceof, insteadof, interface, isset, list, namespace, new, or, print, private, protected, public, require, require_once, return, static, switch, throw, trait, try, unset, use, var, while, xor,@foreach,@endoforeach,orderBy},
+numberstyle=\tiny\color{codegray},
+  stringstyle     = \color{string} \textsf,
+  identifierstyle = \color{identifier} \textsf,
+  commentstyle    = \color{darkgreen} \textsf, %comentarios
+  emph            =[1]{php},
+  emphstyle       =[1],
+  emph            =[2]{where,select,->,get,foreing,increments,mediumText,string,integer,references,on,onDelete,timestamps,join,leftJoin},
+  emphstyle       =[2]\color{leter} \textsf,
+ emph            =[3]{$table, $faker, $result,$id,$format,$gender,$under_date,$users,$user,$rules,$validator,$data,$array,$this},
+  emphstyle       =[3]\color{variables} \textsf,
+ emph            =[4]{artisan,composer} \textsf,
+  emphstyle       =[4],
+ emph            =[5]{=,>},
+  emphstyle       =[5]\color{identifier} \textsf,
+    breakatwhitespace=false,   
+    breaklines=true,                 
+    captionpos= b,                    
+    keepspaces=true,                 
+    numbers=none,                    
+    numbersep=6pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=3,
+        framexleftmargin= 0pt, %para darle espacio al codigo con respecto al fondo
+        framextopmargin=6pt,
+        framexbottommargin=6pt, 
+        frame=tb, 
+        framerule=0pt, %grueso de lineas superior e inferior del recuadro (es como un marco)
+        upquote=true,
+}
+ 
+\lstset{style=mystyle}
+
+%esto es parte del wallpaper - configuración 
+\usepackage[pages=some]{background} 
+
+\backgroundsetup{
+scale=1,
+color=black,
+opacity=0.4,
+angle=0,
+contents={%
+  \includegraphics[width=\paperwidth,height=\paperheight]{screen}
+  }%
+}
+\end_preamble
+\options letterpapper
+\use_default_options false
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language spanish
+\language_package babel
+\inputencoding utf8
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "urlcolor=carminepink"
+\papersize letterpaper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 0
+\tocdepth 0
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0 0 0 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+BgThispage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+
+\size huge
+\color black
+Curso de Laravel 5
+\end_layout
+
+\begin_layout Author
+\begin_inset CommandInset href
+LatexCommand href
+name "duilio.me"
+target "http://duilio.me"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+
+\color black
+16/03/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "prologo-cree-en-ti.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+\noindent
+Conceptos básicos
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "1-instalacion-de-composer.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "2-PSR4-y-uso-de-los-namespaces.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+\noindent
+Curso de Laravel 5
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "1-vagrant-y-homestead.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "2-instalacion-y-estructura.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "3-primeros-pasos.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "4-autenticacion-integrada.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "5-creando-migraciones.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "6-seeders-faker.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "7-fluent-y-eloquent.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "8-primeros-pasos-con-elocuent.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "9-blade-motor-de-plantillas.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "10-integrando-componentes.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "11-listado-y-paginacion.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "12-crear-usuarios.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "13-editar-usuario.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "14-validacion.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "15-validacion-2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "16-internacionalizacion.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "17-eliminar-registros.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "18-aplicando-patron-dry.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "19-ajax-laravel-5.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "20-busquedas-y-filtros.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "21-filtros-de-busqueda-y-paginacion-Parte-2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "22-crea-tus-propios-middleware.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "23-seguridad-middleware.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+\noindent
+Tips
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset CommandInset include
+LatexCommand include
+filename "tip-2-cambio-clave-validando-actual.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "tip-3-agregar-rutas-adicionales.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Agradecimientos
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "agradecimientos.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

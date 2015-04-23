@@ -1,0 +1,259 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Qué es PSR-4 y uso de los namespaces
+\end_layout
+
+\begin_layout Standard
+En este segundo video les voy a hablar sobre la especificación 
+\emph on
+PSR-4
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+PSR-4 
+\emph default
+fue creada por el grupo de 
+\begin_inset CommandInset href
+LatexCommand href
+name "interoperabilidad de PHP"
+target "http://www.php-fig.org/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Este grupo ha trabajado en la creación de especificaciones que nos permitan
+ a nosotros, desarrolladores de PHP, estandarizar muchos procesos, como,
+ en este caso, la manera como nombramos a las clases.
+\end_layout
+
+\begin_layout Standard
+El uso de especificaciones 
+\emph on
+PSR
+\emph default
+ puede ser opcional o parcial, pero particularmente el patrón 
+\emph on
+PSR-4
+\emph default
+ lo encuentro necesario para estructurar nuestras clases.
+\end_layout
+
+\begin_layout Standard
+La ventaja de usar estándares como el 
+\emph on
+PSR-4
+\emph default
+ es que le permite a Composer cargar nuestras clases automáticamente.
+\end_layout
+
+\begin_layout Standard
+También aprenderemos qué son los namespaces (espacios de nombres) en 
+\emph on
+PHP
+\emph default
+ y cómo combinarlos con la especifación 
+\emph on
+PSR-4
+\emph default
+ para ordenar y estructurar mejor nuestras clases.
+\end_layout
+
+\begin_layout Standard
+Ir a lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "PSR4 y uso de los namespaces"
+target "http://duilio.me/curso-de-laravel-5-que-es-psr-4-y-uso-de-los-namespaces/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tutoriales recomendados
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Instala y usa Eloquent (el ORM de Laravel) con Composer (sin instalar Laravel)"
+target "http://duilio.me/implementar-eloquent-orm-en-tu-proyecto-sin-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Itemize
+Crea un proyecto con Composer y configura el composer.json para que utilice
+ 
+\emph on
+PSR-4
+\emph default
+ y agrega varias clases al proyecto siguiendo la estructura que vimos en
+ clase, luego usa dichas clases en otro archivo y comprueba que son cargadas
+ automáticamente.
+\end_layout
+
+\begin_layout Itemize
+Busca proyectos open source en 
+\begin_inset CommandInset href
+LatexCommand href
+name "Packagist"
+target "https://packagist.org/"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub"
+target "https://github.com/"
+
+\end_inset
+
+ y revisa los archivos composer.json ¿Qué patrón utilizan para cargar clases?
+ 
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Cuál es la ventaja del uso de estándares en PHP?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Los 
+\begin_inset CommandInset href
+LatexCommand href
+name "estándares"
+target "http://www.php-fig.org/"
+
+\end_inset
+
+ ayudan a asegurar que el código tenga una alta calidad, menos errores,
+ y pueda ser mantenido más fácilmente por varios desarolladores.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Cuál es la diferencia entre classmap y PSR-4? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El primero no provee un estándar como tal, por lo que podemos nombrar los
+ archivos y clases como queramos, entonces para habilitar las capacidades
+ de “autoload” Composer necesita escanear todos los archivos de la carpeta
+ para crear así un “class map” en otras palabras: determinar qué clases
+ están en qué archivos.
+ Esto se logra con “composer dump-autoload” pero tiene la desventaja que
+ tendremos que ejecutar el comando cada vez que agreguemos o modifiquemos
+ una clase.
+ Mientras que con PSR-4 creamos un estándar que nos permite crear más archivos
+ y clases sin necesidad de actualizar.
+ El estándar explicado de manera sencilla es: Los nombres de espacio (namespace)
+ reproducen la estructura de carpetas, mientras que el nombre de la clase
+ será idéntico al nombre del archivo.
+ La manera más conveniente y más fácil de localizar clases tanto para Composer
+ como para nosotros los programadores, por supuesto es usando el estándar
+ PSR-4 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Conoces otros estándares de estructurar y autocargar clases?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Anteriormente se usaba PSR-0, pero este está ahora obsoleto 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

@@ -1,0 +1,547 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Componentes Html y Form a Laravel
+\end_layout
+
+\begin_layout Standard
+Continuando la explicación sobre Blade, en el siguiente video veremos ejemplos
+ detallados de vistas con HTML plano y la diferencia de utilizar el motor
+ de plantilla Blade, también se mostrará el uso del helper asset() y el
+ error más común a la hora de instalar Laravel 5 (Que las vistas se muestren
+ sin estilo).
+\end_layout
+
+\begin_layout Standard
+Por otro lado instalaremos el componente de Laravel Collective para utilizar
+ las etiquetas dinámicas de Form y HTML como por ejemplo: Html::style()
+ y Form::text(), que fueron eliminados del núcleo del framework (Illuminate)
+ y ahora los mantiene este grupo.
+\end_layout
+
+\begin_layout Standard
+Así mismo vamos a trabajar con el framework Twitter Bootstrap en Laravel
+ y resaltaremos el uso correcto en cuanto al “escape de datos” en Laravel
+ 5 y su diferencia con respecto a las versiones anteriores.
+\end_layout
+
+\begin_layout Standard
+Ir a la lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Componentes Html y Form a Laravel"
+target "http://duilio.me/integrando-los-componentes-html-y-form-a-laravel/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tutoriales recomendados
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Blade (documentación oficial) "
+target "http://laravel.com/docs/5.0/templates"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Laravel Collective (documentación oficial)"
+target "http://laravelcollective.com/docs/5.0/html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Integrar Bootstrap con Blade"
+target "http://duilio.me/integrar-bootstrap-con-blade-en-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividad
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset href
+LatexCommand href
+name "Instalar el componente Collective"
+target "http://laravelcollective.com/docs/5.0/html#installation"
+
+\end_inset
+
+Modificar todo el código de la vista “login” que trae por defecto Laravel
+ con los métodos del componente Collective.
+\end_layout
+
+\begin_layout Standard
+Para ello comenzaremos instalando el paquete a través de Composer.
+ Edita el archivo composer.json de tu proyecto y agrega la línea de código:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	"require": { "laravelcollective/html": "~5.0" } 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego debemos actualizar Composer desde el terminal:
+\end_layout
+
+\begin_layout Standard
+Next, update Composer from the Terminal:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	composer update
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego debemos agregar un nuevo proveedor en nuestro array de proveedores.
+ en 
+\emph on
+config/app.php:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	'providers' => [ // ...
+ 'Collective
+\backslash
+Html
+\backslash
+HtmlServiceProvider', // ...
+ ],
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Por último agregar los alias en 
+\emph on
+config/app.php:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	'aliases' => [ // ...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	'Form' => 'Collective
+\backslash
+Html
+\backslash
+FormFacade', 
+\end_layout
+
+\begin_layout Plain Layout
+
+	'Html' => 'Collective
+\backslash
+Html
+\backslash
+HtmlFacade',
+\end_layout
+
+\begin_layout Plain Layout
+
+	// ...
+ ],
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La vista del login modificada con los métodos del componente quedaría:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	{!! Form::open( ['url' => '/auth/login', 
+\end_layout
+
+\begin_layout Plain Layout
+
+		'role' => 'form', 
+\end_layout
+
+\begin_layout Plain Layout
+
+		'class' => 'form-horizontal'] ) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		!!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<div class="form-group">                              
+\end_layout
+
+\begin_layout Plain Layout
+
+			{!! Form::label('email', 'E-Mail Address',
+\end_layout
+
+\begin_layout Plain Layout
+
+			['class' => 'col-md-4 control-label'] ) 
+\end_layout
+
+\begin_layout Plain Layout
+
+			!!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+			<div class="col-md-6">                                  
+\end_layout
+
+\begin_layout Plain Layout
+
+			{!! Form::email('email', 
+\end_layout
+
+\begin_layout Plain Layout
+
+			old('email') ,
+\end_layout
+
+\begin_layout Plain Layout
+
+			[ 'class' => 'form-control' ])
+\end_layout
+
+\begin_layout Plain Layout
+
+			!!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+			</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<div class="form-group">                              
+\end_layout
+
+\begin_layout Plain Layout
+
+			{!! Form::label('password', 'Password',
+\end_layout
+
+\begin_layout Plain Layout
+
+			[ 'class' => 'col-md-4 control-label' ] ) 
+\end_layout
+
+\begin_layout Plain Layout
+
+			!!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+			<div class="col-md-6">
+\end_layout
+
+\begin_layout Plain Layout
+
+			{!! Form::password('password', 
+\end_layout
+
+\begin_layout Plain Layout
+
+			[ 'class' => 'form-control' ] ) 
+\end_layout
+
+\begin_layout Plain Layout
+
+			!!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+			</div>                          
+\end_layout
+
+\begin_layout Plain Layout
+
+		</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<div class="form-group"> 
+\end_layout
+
+\begin_layout Plain Layout
+
+			<div class="col-md-6 col-md-offset-4">                             	{!!
+ Form::checkbox( 'remember', null ) !!} Remember Me
+\end_layout
+
+\begin_layout Plain Layout
+
+			</div>                          
+\end_layout
+
+\begin_layout Plain Layout
+
+		</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<div class="form-group"> 
+\end_layout
+
+\begin_layout Plain Layout
+
+			<div class="col-md-6 col-md-offset-4">                             	{!!
+ Form::submit('Login',
+\end_layout
+
+\begin_layout Plain Layout
+
+			[ 'class' => 'btn btn-primary', 
+\end_layout
+
+\begin_layout Plain Layout
+
+			'style' => 'margin-right: 15px' ] ) 
+\end_layout
+
+\begin_layout Plain Layout
+
+			!!}       
+\end_layout
+
+\begin_layout Plain Layout
+
+			<a href="{{ asset('/password/email') }}">
+\end_layout
+
+\begin_layout Plain Layout
+
+				Forgot Your Password?
+\end_layout
+
+\begin_layout Plain Layout
+
+			</a> 
+\end_layout
+
+\begin_layout Plain Layout
+
+			</div>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</div>
+\end_layout
+
+\begin_layout Plain Layout
+
+	{!! Form::close() !!}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Qué beneficios observas en el uso del motor de plantillas Blade? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tener una estructura que permita reutilizar código fácilmente 
+\end_layout
+
+\begin_layout Itemize
+La sintaxis es mucho más agradable que la provista por PHP básico 
+\end_layout
+
+\begin_layout Itemize
+Blade incluye otras características avanzadas como la herencia de plantillas
+ (layouts), uso de View Composers y otros.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Cuáles son las ventajas de usar Helpers para generar HTML? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si quisieras generar un simple boton (<button>) quizás no veas ninguna ventaja,
+ pero ahora imagina que necesitas generar un SELECT con opciones dinámicas.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿En cuáles escenario es conveniente usar un framework de CSS como Bootstrap
+ y en cuáles no? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cuando no contamos con un diseñador o front-end developer, frameworks como
+ Bootstrap pueden ser de mucha ayuda, para hacer paneles de administración,
+ etc.
+ Para hacer sitios webs con diseño personalizado y óptimos, quizás sea mejor
+ partir desde cero (con ayuda de un front-end developer) 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

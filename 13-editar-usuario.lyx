@@ -1,0 +1,352 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass book
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Editar Registros con Laravel
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename editar-usuario-laravel-1024x222.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Continuando con nuestro módulo de usuarios tipo CRUD, en esta lección aprenderem
+os a editar registros, la forma en que debemos crear nuestro formulario
+ y las rutas correspondientes a cada método.
+ Además utilizaremos sub-secciones o “partials” en las vistas, lo que nos
+ va a permitir reutilizar código y simplificar las plantillas.
+ A su vez, se mostrará la forma correcta para evitar que se modifique el
+ atributo password si el usuario decide no cambiarlo.
+\end_layout
+
+\begin_layout Standard
+Ir a lección: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Edición de usuarios"
+target "http://duilio.me/editar-registros-con-laravel-5/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Tutoriales recomendados
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Cómo asociar rutas a controladores y acciones con Laravel "
+target "http://duilio.me/como-asociar-rutas-a-controladores-y-acciones-con-laravel/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Edición de regitros con Laravel 4 y Codeception"
+target "http://duilio.me/edicion-de-un-registro-con-laravel-y-codeception/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Http Controllers (Documentación oficial) "
+target "http://laravel.com/docs/5.0/controllers"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Forms (Laracasts)"
+target "https://laracasts.com/series/laravel-5-fundamentals/episodes/10"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Actividades
+\end_layout
+
+\begin_layout Itemize
+Comienza a crear tu propio módulo usando lo aprendido en clase, no olvides
+ compartir el código.
+\end_layout
+
+\begin_layout Itemize
+Hacer el formulario para editar el profile de un usuario:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	<div class="form-group">     
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('bio', 'Biografía') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::text('bio',null,['class' => 'form-control', 'placeholder' =>
+ '']) !!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('twitter', 'Twitter') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::text('twitter',null,['class' => 'form-control', 'placeholder'
+ => 'Twitter']) !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('website', 'Website') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::text('website',null,['class' => 'form-control', 'placeholder'
+ => 'Website']) !!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('birthdate', 'Fecha de nacimiento') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::date('birhdate', 
+\backslash
+Carbon
+\backslash
+Carbon::now(),['class' => 'form-control datepicker', 'placeholder' => ''])
+ !!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<div class="form-group">
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::label('gender', 'Género') !!}
+\end_layout
+
+\begin_layout Plain Layout
+
+		{!! Form::select('gender',['' => 'Eligir género', 'female' => 'Femenino','male
+' => 'Masculino'], ['class' => 'form-control']) !!} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</div>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preguntas
+\end_layout
+
+\begin_layout Itemize
+¿Qué hace el método user::findOrFail() si no encuentra el registro? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Además de cumplir con la función find(), si la búsqueda no es exitosa, Laravel
+ lanzará un error 404.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Cuál es la diferencia entre el método POST y el métodos PUT? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El navegador soporta dos metodos GET y POST.
+ Frameworks como Symfony, Laravel y Ruby emulan métodos como PUT y DELETE
+ para crear requests mas específicos.
+ POST se usa para publicar o crear registros mientras que PUT indica que
+ el registro se va a editar o actualizar 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Que diferencia tiene el método form::model() con respecto a form::open()?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+form::open() simplemente crea una nueva etiqueta de formulario pero sin
+ datos precargados, en cambio con form::model() se puede atar un modelo
+ a nuestro formulario, de tal forma que se mostrarán o seleccionarán los
+ datos existentes en los campos (input, select) automáticamente 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+¿Qué debemos retornar al final de un método como store() o update()?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Debemos retornar una función redirect(), para direccionar al usuario a una
+ vista deseada, o por ejemplo una respuesta en formato JSON si estamos trabajand
+o con AJAX.
+ 
+\end_layout
+
+\begin_layout Itemize
+También es conveniente retornar un mensaje de éxito si se cumplió la función
+ correctamente.
+ (Feedback al usuario).
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
